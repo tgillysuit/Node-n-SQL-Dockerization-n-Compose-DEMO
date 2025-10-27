@@ -2,7 +2,7 @@
 import chalk from 'chalk';
 import { User, GroceryLists } from '../database/db.js';
 
-// POST - creating user
+// POST - creating user = /users
 export const createUser = async (req, res) => {
     try {
         const { name } = req.body;
@@ -16,12 +16,53 @@ export const createUser = async (req, res) => {
     }
 }
 
-// GET - get users
+// GET - get users = /users
 export const getUsers = async (req, res) => {
     try {
         const users = await User.findAll({ order: [["id", "ASC" ]] });
         res.json(users);
     } catch (err) {
         console.log(chalk.red("Error fetching users: ", err))
+    }
+}
+
+// POST - creating grocery list for user /users/:userId/lists
+export const createListForUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const { title } = req.body; // title represents the name of grocery list that belongs to the specific user
+
+        if(!title) return res.status(400).json({ error: "title is required "});
+
+        const user = await User.findByPk(userId);
+        if(!user) return res.status(404).json({ error: "user not found" });
+
+        const list = await GroceryLists.create({ title, user_id: user.id});
+        res.status(201).json(list);
+    } catch (err) {
+        console.log(chalk.red("Error creating list for user: ", err));
+        res.status(500).json({ error: "Failed to create list for user "});
+    }
+}
+
+// GET - gets all grocery lists from that user /users/:userId/lists?includeItems=1
+export const getListsForUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const includeItems = req.query.includeItems === '1';
+
+        const user = await User.findByPk(userId);
+        if(!user) return res.status(404).json({ error: "user not found" });
+
+        const lists = await GroceryLists.findAll({
+            where: { user_id: user.id },
+            include: includeItems ? [{ association: "items" }] : [],
+            order: [["id", "ASC"]]
+        });
+
+        res.json(lists);
+    } catch (err) {
+        console.error("Error fetching user lists:", err);
+        res.status(500).json({ error: "Failed to fetch lists "});
     }
 }

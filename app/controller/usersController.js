@@ -1,6 +1,6 @@
 // Users Controller
-import chalk from 'chalk';
-import { User, GroceryLists } from '../database/db.js';
+
+import { User, GroceryList } from '../database/db.js';
 
 // POST - creating user = /users
 export const createUser = async (req, res) => {
@@ -11,7 +11,7 @@ export const createUser = async (req, res) => {
         const user =  await User.create({ name });
         res.status(201).json(user);
     } catch (err) {
-        console.log(chalk.red("Error creating user: ", err))
+        console.error("Error creating user: ", err);
         res.status(500).json({ error: "Failed to create user "});
     }
 }
@@ -22,7 +22,7 @@ export const getUsers = async (req, res) => {
         const users = await User.findAll({ order: [["id", "ASC" ]] });
         res.json(users);
     } catch (err) {
-        console.log(chalk.red("Error fetching users: ", err))
+        console.error("Error fetching users: ", err);
     }
 }
 
@@ -37,10 +37,15 @@ export const createListForUser = async (req, res) => {
         const user = await User.findByPk(userId);
         if(!user) return res.status(404).json({ error: "user not found" });
 
-        const list = await GroceryLists.create({ title, user_id: user.id});
+        const list = await GroceryList.create({ 
+            title, 
+            user_id: 
+            user.id
+        });
+        
         res.status(201).json(list);
     } catch (err) {
-        console.log(chalk.red("Error creating list for user: ", err));
+        console.error("Error creating list for user: ", err);
         res.status(500).json({ error: "Failed to create list for user "});
     }
 }
@@ -54,7 +59,7 @@ export const getListsForUser = async (req, res) => {
         const user = await User.findByPk(userId);
         if(!user) return res.status(404).json({ error: "user not found" });
 
-        const lists = await GroceryLists.findAll({
+        const lists = await GroceryList.findAll({
             where: { user_id: user.id },
             include: includeItems ? [{ association: "items" }] : [],
             order: [["id", "ASC"]]

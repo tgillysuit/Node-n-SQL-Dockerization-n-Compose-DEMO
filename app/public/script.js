@@ -1,3 +1,4 @@
+// AI Generated
 document.addEventListener('DOMContentLoaded', function() {
     const itemForm = document.getElementById('grocery-item-form');
     const messageDiv = document.getElementById('message');

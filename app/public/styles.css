@@ -1,0 +1,268 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+.form-section {
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+label {
+    display: inline-block;
+    width: 120px;
+    font-weight: bold;
+}
+input {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.btn-add {
+    background-color: #17a2b8;
+    margin-left: 120px;
+}
+.btn-add:hover {
+    background-color: #138496;
+}
+.btn-submit {
+    background-color: #4CAF50;
+    margin-left: 120px;
+    font-size: 16px;
+    padding: 12px 30px;
+}
+.btn-submit:hover {
+    background-color: #45a049;
+}
+.btn-submit:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.btn-remove {
+    background-color: #dc3545;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.btn-remove:hover {
+    background-color: #c82333;
+}
+.btn-edit {
+    background-color: #ffc107;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+.btn-add-more {
+    background-color: #17a2b8;
+    padding: 8px 15px;
+    font-size: 13px;
+    margin-top: 10px;
+}
+.btn-add-more:hover {
+    background-color: #138496;
+}
+#message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Pending items list */
+#pending-items-section {
+    background-color: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+#pending-items-section h3 {
+    margin-top: 0;
+    color: #856404;
+}
+.pending-item {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pending-item-info {
+    flex-grow: 1;
+}
+.pending-item-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+.pending-item-quantity {
+    color: #666;
+    font-size: 14px;
+}
+.pending-item-actions {
+    display: flex;
+    gap: 5px;
+}
+.no-pending-items {
+    color: #856404;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Modal for adding items to existing list */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+.modal-header h3 {
+    margin: 0;
+    color: #333;
+}
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: #000;
+}
+.modal-form-group {
+    margin-bottom: 15px;
+}
+.modal-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+.modal-form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn-cancel {
+    background-color: #6c757d;
+}
+.btn-cancel:hover {
+    background-color: #5a6268;
+}
+
+/* Existing users display styles */
+#users-display {
+    margin-top: 40px;
+}
+.user-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.user-card h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+.grocery-list {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+}
+.grocery-list h4 {
+    margin-top: 0;
+    color: #555;
+}
+.grocery-items {
+    list-style: none;
+    padding: 0;
+}
+.grocery-items li {
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+}
+.grocery-items li:last-child {
+    border-bottom: none;
+}
+.item-name {
+    font-weight: bold;
+}
+.item-quantity {
+    color: #666;
+    font-style: italic;
+}
+.item-checked {
+    text-decoration: line-through;
+    color: #999;
+}
+.no-data {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}

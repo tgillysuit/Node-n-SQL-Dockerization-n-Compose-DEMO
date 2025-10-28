@@ -117,6 +117,6 @@ GroceryItem.belongsTo(GroceryList, {
  */
 export const initDb = async () => {
     await sequelize.authenticate();
-    await sequelize.sync(); // we use sync() because it's for demo use.
+    await sequelize.sync({ alter: true }); // we use sync() because it's for demo use.
     console.log(chalk.green("Database synchronized"));
 }

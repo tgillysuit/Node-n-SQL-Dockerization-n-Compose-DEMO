@@ -4,7 +4,7 @@ import { Router } from 'express';
 // User Controller
 import { createUser, getUsers, createListForUser, getListsForUser } from '../controller/usersController.js' ;
 // GroceryList Controller
-import { getListById, addItemToList } from '../controller/listscontroller.js';
+import { getListById, addItemToList } from '../controller/listsController.js';
 // GroceryItem Controller
 import { updateItem, deleteItem } from '../controller/itemsController.js';
 

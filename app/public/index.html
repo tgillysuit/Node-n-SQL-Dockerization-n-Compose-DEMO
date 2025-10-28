@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node+SQL Dockerization & Compose -  Grocery List</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Universal Grocery List Tracker</h1>
@@ -12,17 +13,72 @@
     <p>This app is a demo app on how dockerization and compose work with Node and SQL.</p>
     <br>
 
-    <form action="/users" method="post" id="grocery-list-form">
-        <label for="name">Name:</label>
-        <input type="text" name="name">
+    <!-- Form Section -->
+    <div class="form-section">
+        <h2>Add Items to Your List</h2>
+        <form id="grocery-item-form">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
 
-        <label for="item">Grocery Item:</label>
-        <input type="text" name="item">
+            <div class="form-group">
+                <label for="item">Grocery Item:</label>
+                <input type="text" id="item" name="item" required>
+            </div>
 
-        <label for="quantity">Quantity:</label>
-        <input type="number" name="quantity" value="1">
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" required>
+            </div>
 
-        <button type="submit">Add Item</button>
-    </form>
+            <button type="submit" class="btn-add">Add to List</button>
+        </form>
+    </div>
+
+    <!-- Pending Items Section -->
+    <div id="pending-items-section" style="display: none;">
+        <h3>Items Ready to Submit (<span id="pending-count">0</span>)</h3>
+        <div id="pending-items-container">
+            <p class="no-pending-items">No items yet.</p>
+        </div>
+        <button id="submit-all-btn" class="btn-submit">Submit All Items</button>
+    </div>
+
+    <div id="message" style="display: none;"></div>
+
+    <!-- Modal for adding items to existing list -->
+    <div id="add-item-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Item to <span id="modal-list-title"></span></h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="modal-item-form">
+                <div class="modal-form-group">
+                    <label for="modal-item-name">Item Name:</label>
+                    <input type="text" id="modal-item-name" required>
+                </div>
+                <div class="modal-form-group">
+                    <label for="modal-item-quantity">Quantity:</label>
+                    <input type="number" id="modal-item-quantity" value="1" min="1" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-submit">Add Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Existing Users Display -->
+    <div id="users-display">
+        <h2>All Users & Their Grocery Lists</h2>
+        <div id="users-container">
+            <p class="no-data">No users yet. Add items to get started!</p>
+        </div>
+    </div>
+    
+    <script src="./script.js"></script>
 </body>
 </html>

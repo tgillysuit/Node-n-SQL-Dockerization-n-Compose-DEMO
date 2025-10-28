@@ -10,7 +10,7 @@ export const getListById = async (req, res) => {
         const list = await GroceryList.findByPk(listId, {
             include: [
                 { model: User, as: 'user', attributes: ["id", "name"] },
-                { model: Items, as: 'items' }
+                { model: GroceryItem, as: 'items' }
             ],
         });
     

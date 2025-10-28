@@ -5,13 +5,13 @@ CREATE DATABASE IF NOT EXISTS grocery_db;
 USE grocery_db;
 
 -- Users table
-CREATE TABLE IF NOT EXISTS Users (
+CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
 -- Grocery lists table
-CREATE TABLE IF NOT EXISTS GroceryLists (
+CREATE TABLE IF NOT EXISTS grocery_lists (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS GroceryLists (
 );
 
 -- Grocery items table
-CREATE TABLE IF NOT EXISTS GroceryItems (
+CREATE TABLE IF NOT EXISTS grocery_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     list_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,

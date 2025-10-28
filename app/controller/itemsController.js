@@ -10,9 +10,9 @@ export const updateItem = async (req, res) => {
         const item = await GroceryItem.findByPk(itemId);
         if (!item) return res.status(404).json({ error: "item not found" });
 
-        if (checked !== undefined) GroceryItem.checked = !!checked;
-        if (quantity !== undefined) GroceryItem.quantity = Number(quantity);
-        if (name !== undefined) GroceryItem.name = name;
+        if (checked !== undefined) item.checked = !!checked;
+        if (quantity !== undefined) item.quantity = Number(quantity);
+        if (name !== undefined) item.name = name;
 
         await item.save();
         res.json(item);

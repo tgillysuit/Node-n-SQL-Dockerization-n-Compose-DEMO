@@ -12,15 +12,15 @@
     <p>This app is a demo app on how dockerization and compose work with Node and SQL.</p>
     <br>
 
-    <form action="POST" id="grocery-list-form">
-        <label for="name"></label>
-        <input type="text" value="name">
+    <form action="/users" method="post" id="grocery-list-form">
+        <label for="name">Name:</label>
+        <input type="text" name="name">
 
-        <label for="item"></label>
-        <input type="text" value="item">
+        <label for="item">Grocery Item:</label>
+        <input type="text" name="item">
 
-        <label for="quantity"></label>
-        <input type="number" value="quantity">
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" value="1">
 
         <button type="submit">Add Item</button>
     </form>

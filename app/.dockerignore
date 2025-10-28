@@ -1,0 +1,39 @@
+# Dependencies (will be installed fresh via npm install)
+node_modules
+npm-debug.log
+
+# Environment files
+.env
+.env.*
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Test files
+test
+tests
+*.test.js
+
+# CI/CD
+.github
+.gitlab-ci.yml
+
+# Docker files (don't copy Dockerfile into itself)
+Dockerfile
+.dockerignore
+docker-compose.yml

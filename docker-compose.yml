@@ -1,33 +1,35 @@
 # Docker Compose file
 version: '3.8'
 
-servuces:
+services:
   app:
     build: ./app
     ports:
-      - "3080:3000"
-    env_file:
-      - ./app/.env
-    enviornment:
-      DB_HOST: DB_HOST
-      DB_USER: DB_USER
-      DB_PASS: DB_PASS
-      DB_NAME: DB_NAME
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: example
+      DB_NAME: grocery_db
       DB_PORT: "3306"
       NODE_ENV: production
-  
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
   db:
     image: mysql:8.0
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: mydb
+      MYSQL_DATABASE: grocery_db
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-pexample" ]
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "-pexample"]
       interval: 5s
       timeout: 3s
       retries: 10
